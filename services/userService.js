@@ -4,20 +4,12 @@ class UserService {
 
     // TODO: Implement methods to work with user
 
-    getAllUsers() {
+    getAll() {
         const users = UserRepository.getAll();
         if(!users) {
             throw new Error("Users not found!");
         }
-        return item;
-    }
-    
-    getOne(search) {
-        const user = UserRepository.getOne(search);
-        if(!user) {
-            throw new Error("User not found!");
-        }
-        return item;
+        return users;
     }
     
     create(data) {
@@ -25,7 +17,7 @@ class UserService {
         if(!user) {
             throw new Error("User not created!");
         }
-        return item;
+        return user;
     }
     
     update(id, dataToUpdate) {
@@ -33,7 +25,7 @@ class UserService {
         if(!user) {
             throw new Error("User not updated!");
         }
-        return item;
+        return user;
     }
 
     delete(id) {
@@ -41,7 +33,7 @@ class UserService {
         if(!user) {
             throw new Error("User not deleted!");
         }
-        return item;
+        return user;
     }
 
     search(search) {
