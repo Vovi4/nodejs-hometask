@@ -3,7 +3,7 @@ const { FighterRepository } = require('../repositories/fighterRepository');
 class FighterService {
     // TODO: Implement methods to work with fighters
 
-    getAllFighters() {
+    getAll() {
         const fighters = FighterRepository.getAll();
         if(!fighters) {
             throw new Error("Fighters not found!");
@@ -11,14 +11,6 @@ class FighterService {
         return fighters;
     }
     
-    getOne(search) {
-        const fighter = FighterRepository.getOne(search);
-        if(!fighter) {
-            throw new Error("Fighter not found!");
-        }
-        return fighter;
-    }
-
     create(data) {
         const fighter = FighterRepository.create(data);
         if(!fighter) {
@@ -38,14 +30,18 @@ class FighterService {
     delete(id) {
         const fighter = FighterRepository.delete(id);
         if(!fighter) {
-            throw new Error("Fighter not deleted!");
+            throw new Error("Fighter not updated!");
         }
         return fighter;
     }
 
-
-
-
+    searc(search) {
+        const fighter = FighterRepository.getOne(search);
+        if(!fighter) {
+            throw new Error("Fighter not found!");
+        }
+        return fighter;
+    }
 }
 
 module.exports = new FighterService();
