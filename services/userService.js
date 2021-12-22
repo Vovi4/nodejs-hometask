@@ -9,15 +9,15 @@ class UserService {
         if(!users) {
             throw new Error("Users not found!");
         }
-        return users;
+        return item;
     }
     
-    getUser(search) {
+    getOne(search) {
         const user = UserRepository.getOne(search);
         if(!user) {
             throw new Error("User not found!");
         }
-        return user;
+        return item;
     }
     
     create(data) {
@@ -25,7 +25,7 @@ class UserService {
         if(!user) {
             throw new Error("User not created!");
         }
-        return user;
+        return item;
     }
     
     update(id, dataToUpdate) {
@@ -33,15 +33,15 @@ class UserService {
         if(!user) {
             throw new Error("User not updated!");
         }
-        return user;
+        return item;
     }
-    
+
     delete(id) {
-        const user = UserRepository.delete(id);
+        const user = UserRepository.update(id);
         if(!user) {
             throw new Error("User not deleted!");
         }
-        return user;
+        return item;
     }
 
     search(search) {
