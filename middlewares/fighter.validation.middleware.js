@@ -5,7 +5,7 @@ const createFighterValid = (req, res, next) => {
     
     try {
 
-        const {id, name, health, power, defense} = reg.body; 
+        const {id, name, health, power, defense} = req.body; 
 
         if (!req.body) {
             throw new Error('Please added some information about fighter !')
@@ -50,7 +50,7 @@ const updateFighterValid = (req, res, next) => {
             throw new Error('All fields must be filled in !')
         }
 
-        for(let key in reg.body) {               
+        for(let key in req.body) {               
             
             if (key === 'name' && typeof req.body[key] !== "srting") {
                 throw new Error('Fighter with this name is alredy exist')                

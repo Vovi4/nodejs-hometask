@@ -56,7 +56,7 @@ const updateUserValid = (req, res, next) => {
         if (!req.body) {
             throw new Error('Data can not be empty !')
         }
-        for (let key in reg.body) {
+        for (let key in req.body) {
 
             if (key === 'email' && (!req.body[key].includes('@gmail.com') || !emailCheck.test(req.body[key]))) {
                 throw new Error('User with this email is alredy exist')                
