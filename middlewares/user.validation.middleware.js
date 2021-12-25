@@ -8,17 +8,23 @@ const createUserValid = (req, res, next) => {
 
     try {
 
-        const {firstName, lastName, email, phoneNumber, password } = req.body;
+        const {id, firstName, lastName, email, phoneNumber, password } = req.body;
 
         if (!req.body) {
             throw new Error('All fields must be filled in !')
         }
 
-        if (!firstName) {
+        for(let key in user) {               
+            if (key === id) {
+                throw new Error('User with this params is alredy exist')                
+            }
+        }
+
+        if (!firstName || typeof firstName !== "srting") {
             throw new Error('Please entered your First Name')
         }
 
-        if (!lastName) {
+        if (!lastName || typeof lastName !== "srting") {
             throw new Error('Please entered your Last Name')
         }
 
@@ -47,22 +53,17 @@ const updateUserValid = (req, res, next) => {
 
     try {
 
-        const {id}  = req.params;
-        const usersData = Object.keys(reg.body);
-
-
         if (!req.body) {
             throw new Error('Data can not be empty !')
         }
         for (let key in reg.body) {
+
             if (key === 'email' && (!req.body[key].includes('@gmail.com') || !emailCheck.test(req.body[key]))) {
-                throw new Error('User with this email is alredy exist')
-                break;
+                throw new Error('User with this email is alredy exist')                
             }
 
             if (key === 'phoneNumber' && !phoneCheck.test(req.body[key])) {
-                throw new Error('User with this phone number is alredy exist')
-                break;
+                throw new Error('User with this phone number is alredy exist')               
             }
         }
 
